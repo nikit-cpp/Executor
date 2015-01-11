@@ -13,6 +13,6 @@ Add into your pom.xml:
 	<repository>
 		<id>my-repo</id>
 		<name>my own repo</name>
-		<url>http://mvn.16mb.com/repository/</url>
+		<url>http://mvn.16mb.com/repository</url>
 	</repository>
 </repositories>
