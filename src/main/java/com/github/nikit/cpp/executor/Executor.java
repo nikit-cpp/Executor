@@ -2,17 +2,18 @@ package com.github.nikit.cpp.executor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Executor {
-	public static ExecutorResult execute(String... command) throws ExecuteException {
+	public static ExecutorResult execute(Charset osCharset, String... command) throws ExecuteException {
 		try{
-			Process processList = Runtime.getRuntime().exec(command);
-			BufferedReader inReader = new BufferedReader(new InputStreamReader(processList.getInputStream()));
-			BufferedReader errReader = new BufferedReader(new InputStreamReader(processList.getErrorStream()));
-			int exitCode = processList.waitFor();
+			Process process = Runtime.getRuntime().exec(command);
+			BufferedReader inReader = new BufferedReader(new InputStreamReader(process.getInputStream(), osCharset));
+			BufferedReader errReader = new BufferedReader(new InputStreamReader(process.getErrorStream(), osCharset));
+			int exitCode = process.waitFor();
 			
 			String tmp;
 			
@@ -34,5 +35,9 @@ public class Executor {
 		}catch (IOException e){
 			throw new ExecuteException("IOException", e);
 		}
+	}
+	
+	public static ExecutorResult execute(String... command) throws ExecuteException{
+		return execute(Charset.defaultCharset(), command);
 	}
 }
