@@ -4,7 +4,7 @@ Add into your pom.xml:
 	<dependency>
 		<groupId>com.github.nikit.cpp</groupId>
 		<artifactId>Executor</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.3</version>
 	</dependency>
 	...
 </dependencies>

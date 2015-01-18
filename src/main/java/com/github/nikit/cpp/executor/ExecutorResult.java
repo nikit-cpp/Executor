@@ -25,6 +25,7 @@ public class ExecutorResult {
 		StringBuilder sb = new StringBuilder();
 		for(String s: stdOut){
 			sb.append(s);
+			sb.append("\n");
 		}
 		return sb.toString();
 	}
@@ -32,6 +33,7 @@ public class ExecutorResult {
 		StringBuilder sb = new StringBuilder();
 		for(String s: stdErr){
 			sb.append(s);
+			sb.append("\n");
 		}
 		return sb.toString();
 	}
